@@ -1,0 +1,13 @@
+
+  MAX6675 library for the Arduino.
+
+  This library reads the temperature from a MAX6675 thermocouple-to-digital IC
+
+  Author:          Petre Rodan <petre.rodan@simplex.ro>
+  Available from:  https://github.com/rodan/max6675
+  License:         GNU GPLv3
+
+  The MAX6675 performs cold-junction compensation and digitizes the 
+  signal from a type-K thermocouple. The data is output in a 12-bit
+  resolution, SPI-compatible, read-only format.
+

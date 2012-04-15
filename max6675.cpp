@@ -52,6 +52,7 @@ void tk_init(uint8_t cs_pin)
 uint16_t tk_get_raw(uint8_t cs_pin)
 {
     uint16_t rv = 0;
+    uint8_t msb, lsb;
 
     // initiate a new conversion
     digitalWrite(cs_pin, LOW);  // enable chip
@@ -62,14 +63,16 @@ uint16_t tk_get_raw(uint8_t cs_pin)
     // read result
     digitalWrite(cs_pin, LOW);
 
-    rv = SPI.transfer(0x0) << 8;
-    rv += SPI.transfer(0x0);
+    msb = SPI.transfer(0x0);
+    lsb = SPI.transfer(0x0);
+
+    rv = ((uint16_t) msb << 8 ) | ((uint16_t) lsb);
 
     digitalWrite(cs_pin, HIGH); // disable chip
 
     // error out if the thermocouple input is open (D2 == 1)
     if (bitRead(rv, 2) == 1)
-        rv = 4095;
+        return 1023;
 
     // only send the interesting bits (D14-D3)
     return ((rv & 0x7ff8) >> 3);

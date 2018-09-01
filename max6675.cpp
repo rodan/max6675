@@ -4,7 +4,7 @@
 
   This library reads the temperature from a MAX6675 thermocouple-to-digital IC
 
-  Author:          Petre Rodan <petre.rodan@simplex.ro>
+  Author:          Petre Rodan <2b4eda@subdimension.ro>
   Available from:  https://github.com/rodan/max6675
 
   The MAX6675 performs cold-junction compensation and digitizes the 
